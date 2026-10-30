@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мастерская Джили — концепт</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   ШАБЛОН КП «АПГРЕЙД САЙТА»
+   1) Бренд клиента — переменные ниже (--accent и т.д.)
+   2) Концепт главной — секции <!-- SITE: ... -->
+   3) Блок КП «Было / Стало» — секция <!-- KP --> в конце
+   Поля для заполнения подсвечены классом .fill
+   ========================================================= */
+:root{
+  --accent:#4F92F6;          /* фирменный цвет клиента */
+  --accent-2:#2F6FDE;
+  --accent-ink:#0B1730;
+  --ink:#0D1015;             /* тёмный фон */
+  --ink-2:#151A22;
+  --ink-3:#1E2530;
+  --line-d:rgba(255,255,255,.09);
+  --paper:#F3F5F8;           /* светлый фон */
+  --card:#FFFFFF;
+  --text:#11151B;
+  --muted:#5E6878;
+  --muted-d:#9AA6B8;
+  --line:#E2E6EC;
+  --ok:#34D399;
+  --warn:#FF5A4E;
+  --r:22px;
+  --font-h:"Unbounded",system-ui,sans-serif;
+  --font:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-h);letter-spacing:-.02em;line-height:1.08;font-weight:700}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:14px;border:0;cursor:pointer;font-weight:800;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 30px -10px rgba(79,146,246,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(79,146,246,.85)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line-d)}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.reveal{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.pre{transform:translateY(16px)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* ---------- полоска «концепт» ---------- */
+.concept-bar{background:var(--accent);color:#fff;font-size:13px;font-weight:600;text-align:center;padding:9px 16px}
+.concept-bar a{text-decoration:underline;text-underline-offset:3px;font-weight:800;white-space:nowrap}
+
+/* ---------- SITE: header ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(13,16,21,.9);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line-d)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:76px}
+.hdr .logo img{height:52px;width:auto}
+.nav{display:flex;gap:26px;font-size:15px;font-weight:600;color:#C8D1DE}
+.nav a:hover{color:#fff}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.hdr-phone{color:#fff;font-weight:800;font-size:16px;white-space:nowrap}
+.msg{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid var(--line-d);transition:background .2s}
+.msg:hover{background:rgba(255,255,255,.15)}
+.msg svg{width:20px;height:20px;fill:#fff}
+.hdr .btn{height:44px;padding:0 18px;font-size:14px;border-radius:12px}
+
+/* ---------- SITE: hero ---------- */
+.hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg img{position:absolute;right:-6%;top:0;height:100%;width:78%;object-fit:cover;object-position:62% 50%;opacity:.9}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,var(--ink) 30%,rgba(13,16,21,.75) 52%,rgba(13,16,21,.15) 80%),
+  linear-gradient(0deg,var(--ink) 0%,rgba(13,16,21,0) 35%),
+  radial-gradient(60% 60% at 15% 20%,rgba(79,146,246,.22),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:64px;min-height:640px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line-d);font-size:14px;font-weight:600;color:#D7DFEA}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+.dot.off{background:#F59E0B;animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(38px,5.4vw,72px);margin:22px 0 22px;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative;white-space:nowrap}
+.hero .lead{font-size:19px;color:#B9C4D4;max-width:520px}
+.hero-stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
+.hero-stats b{display:block;font-family:var(--font-h);font-size:30px;font-weight:700;color:#fff}
+.hero-stats span{font-size:14px;color:var(--muted-d)}
+
+/* booking card */
+.book{background:rgba(21,26,34,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:28px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.book h3{font-size:22px;margin-bottom:6px}
+.book p.sub{font-size:14px;color:var(--muted-d);margin-bottom:20px}
+.lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d);margin:16px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 14px;border-radius:11px;font-size:14px;font-weight:700;background:rgba(255,255,255,.06);border:1px solid var(--line-d);cursor:pointer;transition:all .2s;color:#D7DFEA}
+.chip:hover{border-color:rgba(79,146,246,.6)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.field{width:100%;height:52px;border-radius:13px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);padding:0 16px;font-size:16px;color:#fff;outline:none;transition:border .2s}
+.field:focus{border-color:var(--accent)}
+select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239AA6B8' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+select.field option{color:#111}
+.book .btn{width:100%;margin-top:20px}
+.book small{display:block;margin-top:12px;font-size:12px;color:#7C889A;text-align:center}
+
+/* trust strip */
+.trust{background:var(--ink);border-top:1px solid var(--line-d);color:#C8D1DE}
+.trust .wrap{display:flex;justify-content:space-between;gap:24px;padding-top:22px;padding-bottom:22px;flex-wrap:wrap}
+.trust div{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600}
+.trust svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2;flex:none}
+
+/* ---------- SITE: секции ---------- */
+section.s{padding:110px 0}
+.s-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.s-head h2{font-size:clamp(30px,3.6vw,48px);margin-top:12px;max-width:720px}
+.s-head p{color:var(--muted);max-width:380px;font-size:16px}
+
+/* models */
+.models{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.model{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.model:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(47,111,222,.45)}
+.model small{font-size:12px;color:var(--muted);font-weight:600}
+.model b{display:block;font-family:var(--font-h);font-size:18px;font-weight:700;margin-top:2px}
+.model .go{position:absolute;right:16px;top:50%;transform:translate(6px,-50%);opacity:0;transition:.25s;color:var(--accent);font-weight:800}
+.model:hover .go{opacity:1;transform:translate(0,-50%)}
+
+/* bento services */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:16px}
+.tile{position:relative;border-radius:var(--r);background:var(--card);border:1px solid var(--line);padding:26px;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.tile:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(17,21,27,.35)}
+.tile h3{font-size:20px;font-weight:700;max-width:70%}
+.tile p{font-size:14px;color:var(--muted);margin-top:8px;max-width:62%}
+.tile img{position:absolute;right:-10px;bottom:-6px;width:58%;max-width:230px;transition:transform .5s}
+.tile:hover img{transform:scale(1.06) rotate(-2deg)}
+.tile .more{margin-top:auto;font-size:14px;font-weight:800;color:var(--accent-2)}
+.tile.big{grid-column:span 2;grid-row:span 2;background:var(--ink);color:#fff;border-color:var(--ink);padding:36px}
+.tile.big h3{font-size:clamp(26px,2.6vw,36px);max-width:100%}
+.tile.big p{color:var(--muted-d);font-size:16px;max-width:420px}
+.tile.big .tag{display:inline-flex;align-self:flex-start;padding:6px 12px;border-radius:999px;background:rgba(79,146,246,.16);color:#9CC1FF;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.screen{position:relative;margin-top:auto;height:210px;border-radius:18px;background:linear-gradient(160deg,#1C2533,#0F141B);border:1px solid rgba(255,255,255,.1);padding:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.screen i{border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;font-style:normal;font-size:12px;font-weight:700;color:#C8D1DE}
+.screen i:first-child{grid-column:span 2;grid-row:span 2;background:linear-gradient(140deg,rgba(79,146,246,.55),rgba(79,146,246,.1));color:#fff;font-size:15px}
+.screen i span{font-size:11px;color:var(--muted-d);font-weight:600}
+.tile.accent{background:var(--accent);border-color:var(--accent);color:#fff}
+.tile.accent p{color:rgba(255,255,255,.85)}
+.tile.accent .more{color:#fff}
+.tile .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.18);margin-top:auto}
+.tile .ico svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2}
+
+/* steps */
+.dark{background:var(--ink);color:#fff}
+.dark .s-head p{color:var(--muted-d)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:st}
+.step{background:var(--ink-2);border:1px solid var(--line-d);border-radius:var(--r);padding:28px;position:relative}
+.step::before{counter-increment:st;content:"0" counter(st);font-family:var(--font-h);font-size:15px;font-weight:700;color:var(--accent)}
+.step h3{font-size:19px;margin:44px 0 10px;font-weight:700}
+.step p{font-size:15px;color:var(--muted-d)}
+.step .pill{position:absolute;top:24px;right:24px;font-size:11px;font-weight:800;padding:5px 9px;border-radius:8px;background:rgba(52,211,153,.12);color:var(--ok);letter-spacing:.04em}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.num{border-radius:var(--r);background:var(--card);border:1px solid var(--line);padding:30px}
+.num b{font-family:var(--font-h);font-size:clamp(40px,4.4vw,60px);font-weight:800;line-height:1;letter-spacing:-.04em;display:block;color:var(--text)}
+.num b sup{font-size:.45em;color:var(--accent);vertical-align:top;margin-left:2px}
+.num h3{font-family:var(--font);font-size:17px;font-weight:800;letter-spacing:0;margin:22px 0 6px}
+.num p{font-size:14px;color:var(--muted)}
+
+/* contact */
+.visit{position:relative;border-radius:30px;overflow:hidden;background:var(--ink);color:#fff;display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.visit .info{padding:52px;display:flex;flex-direction:column;gap:22px;z-index:1}
+.visit h2{font-size:clamp(28px,2.8vw,40px)}
+.visit .row{display:flex;gap:14px;align-items:flex-start;color:#C8D1DE;font-size:16px}
+.visit .row svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2;flex:none;margin-top:2px}
+.visit .row b{color:#fff;display:block;font-size:17px}
+.visit .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto}
+.visit .pic{position:relative;background:linear-gradient(180deg,#E9EDF2,#C9D0D9)}
+.visit .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:8% 60%}
+.visit .pic::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink),rgba(13,16,21,0) 22%);z-index:1}
+
+/* site footer */
+.ftr{background:var(--ink);color:#9AA6B8;padding:64px 0 120px;font-size:14px}
+.ftr .wrap{display:grid;grid-template-columns:1.2fr 2fr 1fr;gap:40px}
+.ftr img{height:46px;width:auto;margin-bottom:16px}
+.ftr h4{color:#fff;font-size:14px;margin-bottom:14px}
+.ftr ul{list-style:none;columns:2;column-gap:28px}
+.ftr li{margin-bottom:8px}
+.ftr a:hover{color:#fff}
+
+/* mobile sticky bar */
+.mbar{display:none}
+
+/* =========================================================
+   KP: блок «Было / Стало»
+   ========================================================= */
+.kp{background:#fff;padding:110px 0 120px;border-top:1px solid var(--line);position:relative}
+.kp::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,var(--accent) 0 24px,transparent 24px 36px)}
+.kp-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:52px}
+.kp-top h2{font-size:clamp(32px,4.2vw,58px);font-weight:800;max-width:780px}
+.kp-top h2 span{color:var(--accent)}
+.kp-contacts{display:flex;align-items:center;gap:10px}
+.cphone{font-family:var(--font-h);font-weight:700;font-size:18px;color:var(--text);margin-right:6px;white-space:nowrap}
+.cico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;transition:transform .2s}
+.cico:hover{transform:translateY(-2px)}
+.cico svg{width:24px;height:24px;fill:#fff}
+.cico.tg{background:#29A9EB}
+.cico.vb{background:#7360F2}
+.dark-c .cphone{color:#fff;font-size:16px}
+.kp-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.col-lbl{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:999px;margin-bottom:18px}
+.col-lbl.was{background:#FDECEA;color:#C9362B}
+.col-lbl.will{background:#E8F1FE;color:var(--accent-2)}
+
+/* old site */
+.old{position:relative;padding-bottom:40px}
+.browser{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(17,21,27,.35);background:#fff;filter:saturate(.75)}
+.browser .bar{height:34px;background:#EEF1F5;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid var(--line)}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:#D3D8E0}
+.browser .bar span{margin-left:12px;font-size:12px;color:var(--muted);background:#fff;border-radius:6px;padding:3px 10px}
+.phone{position:absolute;right:-8px;bottom:0;width:27%;border-radius:22px;border:6px solid #11151B;overflow:hidden;box-shadow:0 30px 50px -20px rgba(0,0,0,.5);background:#000;aspect-ratio:9/17}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pin{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--warn);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,90,78,.22);z-index:2}
+.issues{list-style:none;margin-top:26px;display:grid;gap:12px}
+.issues li{display:flex;gap:14px;align-items:flex-start;font-size:15px;color:#3A4351}
+.issues li b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--warn);color:#fff;font-size:13px;display:grid;place-items:center}
+.issues li strong{color:var(--text)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.metric{border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--paper)}
+.metric b{font-family:var(--font-h);font-size:22px;font-weight:700;color:#C9362B;display:block}
+.metric span{font-size:12px;color:var(--muted);line-height:1.3;display:block;margin-top:4px}
+.note{font-size:12px;color:#8A93A1;margin-top:10px}
+
+/* new */
+.will-card{background:var(--ink);color:#fff;border-radius:28px;padding:40px;position:relative;overflow:hidden}
+.will-card::after{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(79,146,246,.35),transparent 70%)}
+.will-card h3{font-size:clamp(24px,2.4vw,32px);font-weight:800;position:relative;z-index:1}
+.will-card h3 span{color:var(--accent)}
+.will-card .usp{color:var(--muted-d);margin-top:12px;font-size:16px;max-width:480px;position:relative;z-index:1}
+.phase{margin-top:30px;position:relative;z-index:1}
+.phase-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.phase-h b{font-family:var(--font-h);font-size:13px;font-weight:700;color:var(--ink);background:var(--accent);border-radius:8px;padding:5px 9px}
+.phase-h span{font-weight:800;font-size:16px}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.feat div{background:var(--ink-2);border:1px solid var(--line-d);border-radius:16px;padding:16px}
+.feat div strong{display:block;font-size:15px;margin-bottom:4px}
+.feat div p{font-size:13px;color:var(--muted-d);line-height:1.45}
+.deal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px;position:relative;z-index:1}
+.deal div{border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.deal small{font-size:12px;color:var(--muted-d);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.deal b{display:block;font-family:var(--font-h);font-size:20px;font-weight:700;margin-top:4px}
+.kp-cta{display:flex;gap:14px;align-items:center;margin-top:28px;flex-wrap:wrap;position:relative;z-index:1}
+.kp-cta .who{font-size:14px;color:var(--muted-d)}
+.kp-cta .who b{color:#fff;display:block;font-size:15px}
+.fill{background:rgba(255,214,10,.16);outline:1px dashed rgba(255,214,10,.7);border-radius:6px;padding:0 6px}
+
+/* toast */
+.toast{visibility:hidden;position:fixed;left:50%;bottom:28px;transform:translate(-50%,140%);background:#11151B;color:#fff;padding:16px 22px;border-radius:14px;font-size:14px;font-weight:600;box-shadow:0 20px 40px -10px rgba(0,0,0,.5);z-index:100;transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 32px);border:1px solid rgba(255,255,255,.1)}
+.toast.show{visibility:visible;transform:translate(-50%,0)}
+
+/* ---------- адаптив ---------- */
+@media (max-width:1080px){
+  .nav{display:none}
+  .hero .wrap{grid-template-columns:1fr;min-height:0}
+  .hero-bg img{width:100%;right:0;opacity:.45}
+  .models{grid-template-columns:repeat(3,1fr)}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .steps,.nums{grid-template-columns:repeat(2,1fr)}
+  .kp-grid{grid-template-columns:1fr}
+  .ftr .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .hdr .wrap{height:64px;gap:12px}
+  .hdr .logo img{height:38px}
+  .hdr-phone,.hdr .btn,.hdr .msg.tg{display:none}
+  .hero .wrap{padding-top:40px;padding-bottom:40px;gap:32px}
+  .hero .lead{font-size:17px}
+  .hero-stats{gap:22px}
+  .hero-stats b{font-size:24px}
+  .book{padding:22px}
+  section.s{padding:72px 0}
+  .s-head{margin-bottom:32px}
+  .models{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .tile{min-height:200px}
+  .tile.big{grid-column:auto;grid-row:auto;min-height:440px;padding:26px}
+  .screen{height:180px;margin-top:24px}
+  .steps,.nums{grid-template-columns:1fr}
+  .step h3{margin-top:26px}
+  .visit{grid-template-columns:1fr}
+  .visit .info{padding:30px 24px}
+  .visit .pic{height:220px}
+  .visit .pic::before{background:linear-gradient(180deg,var(--ink),rgba(13,16,21,0) 30%)}
+  .ftr .wrap{grid-template-columns:1fr}
+  .trust .wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(13,16,21,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line-d)}
+  .mbar a{height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:14px;color:#fff;background:rgba(255,255,255,.08)}
+  .mbar a.main{background:var(--accent)}
+  .mbar svg{width:18px;height:18px;fill:#fff}
+  .kp{padding:72px 0 120px}
+  .cphone{font-size:16px}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .phone{width:32%}
+  .will-card{padding:26px 22px}
+  .feat{grid-template-columns:1fr}
+  .deal b{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<div class="concept-bar">Концепт новой главной для «Мастерская Джили» · <a href="#kp">Сравнение «было / стало» ↓</a></div>
+
+<!-- SITE: header -->
+<header class="hdr">
+  <div class="wrap">
+    <a href="#" class="logo"><img src="assets/logo-light.svg" alt="Мастерская Джили"></a>
+    <nav class="nav">
+      <a href="#models">Модели</a><a href="#services">Услуги</a><a href="#how">Как работаем</a><a href="#visit">Контакты</a>
+    </nav>
+    <div class="hdr-right">
+      <a class="hdr-phone" href="tel:+375293210202">+375 29 321 02 02</a>
+      <a class="msg tg" href="#" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></a>
+      <a class="msg" href="#" aria-label="Viber"><svg viewBox="0 0 24 24"><path d="M11.4 1C8 1 3.2 1.8 2.3 6.3c-.6 2.5-.5 5.4.2 8 .6 2.2 2 3.6 4 4.3v3.1c0 .6.7.9 1.1.4l2.9-3c2.8.1 6.8-.4 8.7-2 2.4-2 2.7-6.2 2-9.8C20.5 2.6 16.3 1 11.4 1zm4.8 13.9c-.4.6-1.1 1.2-1.9 1-2.9-.8-6.7-4.4-7.6-7.4-.2-.8.4-1.5 1-1.9.5-.3 1.1-.1 1.4.3l1 1.4c.3.4.2 1-.2 1.3l-.4.3c.6 1.6 1.8 2.8 3.4 3.4l.3-.4c.3-.4.9-.5 1.3-.2l1.4 1c.4.3.6.9.3 1.2z"/></svg></a>
+      <a class="btn btn-primary" href="#book">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<!-- SITE: hero -->
+<section class="hero">
+  <div class="hero-bg"><img src="assets/hero.jpg" alt=""></div>
+  <div class="wrap">
+    <div>
+      <div class="status"><span class="dot" id="dot"></span><span id="status">Открыто · сегодня до 20:00</span></div>
+      <h1>Сервис Geely<br>на <em>20% дешевле</em><br>дилера</h1>
+      <p class="lead">Постгарантийное ТО и ремонт всех моделей Geely в Минске. Без очередей. Смета — до начала работ, ни рубля без вашего согласия.</p>
+      <div class="hero-stats">
+        <div><b>100+</b><span>услуг для Geely</span></div>
+        <div><b>10+</b><span>моделей в работе</span></div>
+        <div><b>6 дней</b><span>в неделю</span></div>
+      </div>
+    </div>
+
+    <form class="book" id="book" onsubmit="return demoSubmit(event)">
+      <h3>Запись за 30 секунд</h3>
+      <p class="sub">Подтвердим время в Telegram или звонком</p>
+      <span class="lbl">Ваша Geely</span>
+      <div class="chips" id="chips">
+        <button type="button" class="chip on">Monjaro</button>
+        <button type="button" class="chip">Atlas Pro</button>
+        <button type="button" class="chip">Coolray</button>
+        <button type="button" class="chip">Tugella</button>
+        <button type="button" class="chip">Okavango</button>
+        <button type="button" class="chip">Другая</button>
+      </div>
+      <span class="lbl">Что нужно сделать</span>
+      <select class="field" aria-label="Услуга">
+        <option>Плановое ТО</option><option>Замена масла</option><option>Диагностика</option><option>Подвеска</option><option>Тормозная система</option><option>Автоэлектрика</option><option>Русификация / прошивка ГУ</option><option>Антикор и мойка днища</option>
+      </select>
+      <span class="lbl">Телефон</span>
+      <input class="field" type="tel" placeholder="+375 (__) ___-__-__" aria-label="Телефон">
+      <button class="btn btn-primary" type="submit">Записаться на сервис →</button>
+      <small>Перезвоним в рабочее время</small>
+    </form>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg>Только проверенные запчасти</div>
+    <div><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 22l5-3 5 3-1.5-10"/></svg>Сертифицированные мастера</div>
+    <div><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Подробная смета</div>
+    <div><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V4h8v3M3 13h18"/></svg>Спецоборудование под Geely</div>
+  </div>
+</div>
+
+<!-- SITE: модели -->
+<section class="s" id="models">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div><div class="eyebrow">Модели</div><h2>Выберите свою Geely — покажем всё по ТО именно для неё</h2></div>
+      <p>Регламент, типовые работы и запись — на странице модели. Без поиска по простыням текста.</p>
+    </div>
+    <div class="models reveal" id="modelGrid"></div>
+  </div>
+</section>
+
+<!-- SITE: услуги (bento) -->
+<section class="s" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div><div class="eyebrow">Услуги</div><h2>Всё для Geely — в одном боксе</h2></div>
+      <p>Более 100 услуг: от замены масла до прошивки мультимедиа.</p>
+    </div>
+    <div class="bento reveal">
+      <a class="tile big" href="#book">
+        <span class="tag">Спецуслуга</span>
+        <h3>Русификация и прошивка мультимедиа Geely</h3>
+        <p>Китайская версия? Меню и голосовые подсказки на русском, обновление головного устройства. От 500 BYN.</p>
+        <div class="screen" aria-hidden="true">
+          <i>Навигатор<span>на русском</span></i><i>Музыка</i><i>Климат</i><i>Камеры</i><i>Настройки</i>
+        </div>
+      </a>
+      <a class="tile" href="#book"><h3>Замена масла</h3><p>Каждые 10 000 км или раз в полгода</p><img src="assets/s-oil.png" alt=""><span class="more">Записаться →</span></a>
+      <a class="tile" href="#book"><h3>Подвеска</h3><p>Диагностика и ремонт ходовой</p><img src="assets/s-suspension.png" alt=""><span class="more">Подробнее →</span></a>
+      <a class="tile" href="#book"><h3>Тормоза</h3><p>Колодки, диски, жидкость</p><img src="assets/s-brake.png" alt=""><span class="more">Подробнее →</span></a>
+      <a class="tile accent" href="#book"><h3>Автоэлектрика и диагностика</h3><p>Найдём причину ошибки, а не просто сбросим её</p><span class="ico"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span></a>
+      <a class="tile" href="#book" style="grid-column:span 2"><h3>Антикор и мойка днища</h3><p>Пороги, арки, днище — защищаем от реагентов до зимы</p><img src="assets/s-wash.png" alt="" style="width:40%"><span class="more">Записаться на сезон →</span></a>
+      <a class="tile" href="#book" style="grid-column:span 2"><h3>Плановое ТО по регламенту</h3><p>По пробегу, модели и комплектации — с фотоотчётом в мессенджер</p><img src="assets/s-body.png" alt="" style="width:40%"><span class="more">Рассчитать ТО →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SITE: как работаем -->
+<section class="s dark" id="how">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div><div class="eyebrow">Как работаем</div><h2>Прозрачно от записи до выдачи ключей</h2></div>
+      <p>Вы знаете цену до начала работ и видите, что происходит с машиной.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><span class="pill">30 сек</span><h3>Запись онлайн</h3><p>Модель, услуга, удобное время — без звонков и ожидания на линии.</p></div>
+      <div class="step"><h3>Диагностика</h3><p>Осмотр и компьютерная диагностика на оборудовании под Geely.</p></div>
+      <div class="step"><h3>Смета и согласие</h3><p>Присылаем смету. Работаем только после вашего «да».</p></div>
+      <div class="step"><span class="pill">фото</span><h3>Готово</h3><p>Фотоотчёт о работах в мессенджер и заменённые детали на руки.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE: цифры -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div><div class="eyebrow">Почему мы</div><h2>Работаем только с Geely — и знаем их наизусть</h2></div>
+    </div>
+    <div class="nums reveal">
+      <div class="num"><b>−20<sup>%</sup></b><h3>Дешевле дилера</h3><p>В среднем по чеку на ТО и ремонт.</p></div>
+      <div class="num"><b>100<sup>+</sup></b><h3>Услуг для Geely</h3><p>Знаем слабые места каждой модели.</p></div>
+      <div class="num"><b>0</b><h3>Очередей</h3><p>Записываетесь на время — приезжаете ко времени.</p></div>
+      <div class="num"><b>100<sup>%</sup></b><h3>Проверенные запчасти</h3><p>Только надёжные поставщики, гарантия качества.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SITE: контакты -->
+<section class="s" id="visit" style="padding-top:0">
+  <div class="wrap">
+    <div class="visit reveal">
+      <div class="info">
+        <div class="eyebrow">Приезжайте</div>
+        <h2>Рядом с МКАД, у ТЦ Diamond City</h2>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Щомыслицкий с/с, 109</b>Минский район</div></div>
+        <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Пн–Пт 9:00–20:00</b>Сб 10:00–18:00</div></div>
+        <div class="btns">
+          <a class="btn btn-primary" href="#book">Записаться</a>
+          <a class="btn btn-ghost" href="#">Маршрут в Яндекс Картах</a>
+        </div>
+      </div>
+      <div class="pic"><img src="assets/car-side.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div><img src="assets/logo-light.svg" alt=""><p>ООО «Мастерская Джи»<br>УНП 692202166</p></div>
+    <div><h4>Ремонт и ТО</h4><ul id="ftrModels"></ul></div>
+    <div><h4>Контакты</h4><p><a href="tel:+375293210202">+375 29 321 02 02</a><br>Щомыслицкий с/с, 109<br>Пн–Пт 9–20 · Сб 10–18</p></div>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Быстрые действия">
+  <a href="tel:+375293210202"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Звонок</a>
+  <a href="#"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg>Telegram</a>
+  <a class="main" href="#book">Записаться</a>
+</nav>
+
+<!-- =========================================================
+     KP: «Было / Стало»
+     ========================================================= -->
+<section class="kp" id="kp">
+  <div class="wrap">
+    <div class="kp-top reveal">
+      <h2>Сейчас сайт <span>рассказывает.</span><br>Новый — будет записывать.</h2>
+      <div class="kp-contacts"><a class="cphone" href="tel:+375295708247">+375 29 570-82-47</a><a class="cico tg" href="https://t.me/Alexander_SN" target="_blank" rel="noopener" aria-label="Telegram @Alexander_SN" title="Telegram @Alexander_SN"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></a><a class="cico vb" href="viber://chat?number=%2B375295708247" aria-label="Viber +375 29 570-82-47" title="Viber +375 29 570-82-47"><svg viewBox="0 0 24 24"><path d="M11.4 1C8 1 3.2 1.8 2.3 6.3c-.6 2.5-.5 5.4.2 8 .6 2.2 2 3.6 4 4.3v3.1c0 .6.7.9 1.1.4l2.9-3c2.8.1 6.8-.4 8.7-2 2.4-2 2.7-6.2 2-9.8C20.5 2.6 16.3 1 11.4 1zm4.8 13.9c-.4.6-1.1 1.2-1.9 1-2.9-.8-6.7-4.4-7.6-7.4-.2-.8.4-1.5 1-1.9.5-.3 1.1-.1 1.4.3l1 1.4c.3.4.2 1-.2 1.3l-.4.3c.6 1.6 1.8 2.8 3.4 3.4l.3-.4c.3-.4.9-.5 1.3-.2l1.4 1c.4.3.6.9.3 1.2z"/></svg></a></div>
+    </div>
+
+    <div class="kp-grid">
+      <!-- БЫЛО -->
+      <div class="reveal">
+        <span class="col-lbl was">● Сейчас</span>
+        <div class="old">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>geely-master.by</span></div>
+            <img src="assets/old-site.jpg" alt="Текущая главная geely-master.by">
+          </div>
+          <div class="phone"><img src="assets/old-mobile.jpg" alt="Текущая мобильная версия"></div>
+          <span class="pin" style="left:6%;top:28%">1</span>
+          <span class="pin" style="left:20%;top:52%">2</span>
+          <span class="pin" style="left:48%;top:12%">3</span>
+          <span class="pin" style="right:6%;top:62%">4</span>
+        </div>
+        <ul class="issues">
+          <li><b>1</b><span><strong>Оффер без причины выбрать вас.</strong> «−20% к дилеру» спрятано в середине страницы, а кнопка первого экрана — «Подробнее».</span></li>
+          <li><b>2</b><span><strong>Нет записи с выбором модели и услуги.</strong> Форма — только в самом низу, после SEO-текста.</span></li>
+          <li><b>3</b><span><strong>Дилерский стиль без характера.</strong> Ничем не отличается от сотни СТО; спецуслуги (русификация, прошивка) не видны.</span></li>
+          <li><b>4</b><span><strong>Медленный мобильный.</strong> Полная загрузка 5–6 с, 91 запрос — часть людей уходит раньше.</span></li>
+        </ul>
+        <div class="metrics">
+          <div class="metric"><b>2–3,6 с</b><span>до первого контента</span></div>
+          <div class="metric"><b>5,3–6 с</b><span>полная загрузка</span></div>
+          <div class="metric"><b>91</b><span>запрос к серверу</span></div>
+          <div class="metric"><b>~3,9 МБ</b><span>вес главной</span></div>
+        </div>
+        <p class="note">Замер 30.10.2026, два прогона, мобильная эмуляция (iPhone 13), без ограничения скорости сети.</p>
+      </div>
+
+      <!-- СТАНЕТ -->
+      <div class="reveal">
+        <span class="col-lbl will">● После апгрейда</span>
+        <div class="will-card">
+          <h3>Сайт, который <span>записывает клиентов</span>, пока мастера работают</h3>
+          <p class="usp">Главная продаёт с первого экрана: цифра выгоды, живой статус «открыто», запись в 3 касания — и всё это удобно с телефона.</p>
+
+          <div class="phase">
+            <div class="phase-h"><b>01</b><span>Визуальный апгрейд</span></div>
+            <div class="feat">
+              <div><strong>Оффер с цифрой</strong><p>«На 20% дешевле дилера» — первым, что видит клиент.</p></div>
+              <div><strong>Премиальный стиль</strong><p>Тёмная тема и крупная типографика — уровень новых Geely.</p></div>
+              <div><strong>Mobile-first</strong><p>Звонок, Telegram и запись всегда под пальцем.</p></div>
+              <div><strong>Скорость &lt; 2 с</strong><p>Лёгкие изображения, без лишних скриптов. Цель по первому экрану.</p></div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-h"><b>02</b><span>Функционал</span></div>
+            <div class="feat">
+              <div><strong>Онлайн-запись</strong><p>Модель → услуга → время. Заявка сразу мастеру в Telegram.</p></div>
+              <div><strong>Калькулятор ТО</strong><p>Стоимость по модели и пробегу — до звонка.</p></div>
+              <div><strong>Живые отзывы</strong><p>Подтягиваем рейтинг и отзывы с Яндекс Карт.</p></div>
+              <div><strong>Страницы спецуслуг</strong><p>Русификация и прошивка — отдельные посадочные под рекламу.</p></div>
+            </div>
+          </div>
+
+          <div class="deal">
+            <div><small>Срок</small><b class="fill">[__ дней]</b></div>
+            <div><small>Этап 1</small><b class="fill">[___ BYN]</b></div>
+            <div><small>Этап 2</small><b class="fill">[___ BYN]</b></div>
+          </div>
+
+          <div class="kp-cta">
+            <a class="btn btn-primary" href="https://t.me/Alexander_SN" target="_blank" rel="noopener">Обсудить проект →</a>
+            <div class="kp-contacts dark-c"><a class="cphone" href="tel:+375295708247">+375 29 570-82-47</a><a class="cico tg" href="https://t.me/Alexander_SN" target="_blank" rel="noopener" aria-label="Telegram @Alexander_SN" title="Telegram @Alexander_SN"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></a><a class="cico vb" href="viber://chat?number=%2B375295708247" aria-label="Viber +375 29 570-82-47" title="Viber +375 29 570-82-47"><svg viewBox="0 0 24 24"><path d="M11.4 1C8 1 3.2 1.8 2.3 6.3c-.6 2.5-.5 5.4.2 8 .6 2.2 2 3.6 4 4.3v3.1c0 .6.7.9 1.1.4l2.9-3c2.8.1 6.8-.4 8.7-2 2.4-2 2.7-6.2 2-9.8C20.5 2.6 16.3 1 11.4 1zm4.8 13.9c-.4.6-1.1 1.2-1.9 1-2.9-.8-6.7-4.4-7.6-7.4-.2-.8.4-1.5 1-1.9.5-.3 1.1-.1 1.4.3l1 1.4c.3.4.2 1-.2 1.3l-.4.3c.6 1.6 1.8 2.8 3.4 3.4l.3-.4c.3-.4.9-.5 1.3-.2l1.4 1c.4.3.6.9.3 1.2z"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Модели клиента — меняются в одном месте
+const MODELS = ["Monjaro","Atlas Pro","Coolray","Tugella","Okavango","Atlas","Emgrand 7","Emgrand X7","Binyue Cool","SC7"];
+document.getElementById("modelGrid").innerHTML = MODELS.map(m =>
+  `<div class="model" data-m="${m}"><small>Geely</small><b>${m}</b><span class="go">→</span></div>`).join("");
+document.getElementById("ftrModels").innerHTML = MODELS.map(m => `<li><a href="#">Geely ${m}</a></li>`).join("");
+
+// чипы модели в форме
+const chips = document.getElementById("chips");
+function pick(name){
+  let hit = [...chips.children].find(c => c.textContent === name);
+  if(!hit){ hit = chips.lastElementChild; }
+  [...chips.children].forEach(c => c.classList.toggle("on", c === hit));
+}
+chips.addEventListener("click", e => { if(e.target.classList.contains("chip")) pick(e.target.textContent); });
+document.getElementById("modelGrid").addEventListener("click", e => {
+  const card = e.target.closest(".model"); if(!card) return;
+  pick(card.dataset.m);
+  document.getElementById("book").scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+// статус «открыто сейчас» по времени Минска
+(function(){
+  const now = new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Minsk"}));
+  const d = now.getDay(), h = now.getHours() + now.getMinutes()/60;
+  const hours = {1:[9,20],2:[9,20],3:[9,20],4:[9,20],5:[9,20],6:[10,18]};
+  const t = hours[d], st = document.getElementById("status"), dot = document.getElementById("dot");
+  if(t && h >= t[0] && h < t[1]) st.textContent = `Открыто · сегодня до ${t[1]}:00`;
+  else { dot.classList.add("off"); st.textContent = "Сейчас закрыто · запишитесь онлайн, перезвоним утром"; }
+})();
+
+function demoSubmit(e){
+  e.preventDefault();
+  const t = document.getElementById("toast");
+  t.textContent = "Демо: в рабочей версии заявка сразу уйдёт мастеру в Telegram ✓";
+  t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 3200);
+  return false;
+}
+
+// плавное появление блоков
+// лёгкий сдвиг при прокрутке; текст виден всегда
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  const io = new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.remove("pre"); io.unobserve(x.target); } }), {threshold:.1});
+  document.querySelectorAll(".reveal").forEach(el => { if(el.getBoundingClientRect().top > innerHeight){ el.classList.add("pre"); io.observe(el); } });
+}
+</script>
+</body>
+</html>
