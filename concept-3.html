@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мастерская Джили — концепт 3</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* Концепт 3 «Инженерный»: чертёжная сетка, регламентная карта, заявка в виде заказ-наряда */
+:root{
+  --navy:#0B1B33;
+  --navy-2:#11264A;
+  --paper:#E9ECEF;
+  --sheet:#F7F8F9;
+  --ink:#101418;
+  --muted:#56606C;
+  --line:#C5CDD6;
+  --accent:#2F6FDE;
+  --blue-l:#8AB6FF;
+  --ok:#22C55E;
+  --font-d:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --font:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-d);text-transform:uppercase;letter-spacing:-.01em;line-height:1;font-weight:700;text-wrap:balance}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.grid-bg{background-image:linear-gradient(rgba(16,20,24,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(16,20,24,.06) 1px,transparent 1px);background-size:32px 32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:54px;padding:0 24px;border:0;cursor:pointer;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,transform .2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#245BC0}
+.btn-ghost{border:1px solid rgba(255,255,255,.3);color:#fff;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);border-bottom:1px solid rgba(138,182,255,.18);color:#fff}
+.hdr .wrap{display:flex;align-items:center;gap:32px;height:72px}
+.hdr .logo img{height:46px;width:auto}
+.nav{display:flex;gap:28px}
+.nav a{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#B6C6DD}
+.nav a:hover{color:#fff}
+.hdr-r{margin-left:auto;display:flex;align-items:center;gap:18px}
+.hdr-phone{font-family:var(--mono);font-weight:600;font-size:15px;white-space:nowrap}
+.hdr .btn{height:44px;padding:0 18px;font-size:13px}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;
+  background-image:linear-gradient(rgba(138,182,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(138,182,255,.08) 1px,transparent 1px),linear-gradient(rgba(138,182,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(138,182,255,.04) 1px,transparent 1px);
+  background-size:96px 96px,96px 96px,24px 24px,24px 24px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
+.hero .mono{color:var(--blue-l)}
+.hero h1{font-size:clamp(40px,4.8vw,72px);margin:20px 0 24px}
+.hero .wrap>*{min-width:0}
+.hero h1 em{font-style:normal;color:var(--blue-l)}
+.hero .lead{font-size:18px;color:#B6C6DD;max-width:520px}
+.hero-btns{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.frame{position:relative;padding:18px}
+.frame .img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--navy-2);max-width:100%}
+.frame .img img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;filter:grayscale(1) contrast(1.15) brightness(1.05);mix-blend-mode:screen;opacity:.85}
+.frame .img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,27,51,.6),transparent 50%),rgba(47,111,222,.28);mix-blend-mode:multiply}
+.frame i{position:absolute;width:22px;height:22px;border-color:var(--blue-l);border-style:solid}
+.frame i:nth-of-type(1){left:0;top:0;border-width:2px 0 0 2px}
+.frame i:nth-of-type(2){right:0;top:0;border-width:2px 2px 0 0}
+.frame i:nth-of-type(3){left:0;bottom:0;border-width:0 0 2px 2px}
+.frame i:nth-of-type(4){right:0;bottom:0;border-width:0 2px 2px 0}
+.callout{position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:8px;z-index:2}
+.callout::before{content:"";width:10px;height:10px;border:2px solid var(--blue-l);border-radius:50%;background:var(--navy)}
+.callout span{background:rgba(11,27,51,.85);border:1px solid rgba(138,182,255,.35);padding:4px 8px}
+.c1{left:12%;top:58%}.c2{left:40%;top:24%}.c3{right:8%;bottom:20%}
+.frame-cap{display:flex;justify-content:space-between;margin-top:10px;color:#7F95B5}
+
+/* spec strip */
+.spec{background:var(--sheet);border-bottom:1px solid var(--line)}
+.spec .wrap{display:grid;grid-template-columns:repeat(5,1fr);max-width:1192px;padding-left:0;padding-right:0}
+.spec div{padding:22px 18px;border-left:1px solid var(--line)}
+.spec div:last-child{border-right:1px solid var(--line)}
+.spec .mono{color:var(--muted);font-size:11px}
+.spec b{display:flex;align-items:center;gap:8px;font-family:var(--font-d);font-size:24px;font-weight:700;margin-top:4px;text-transform:uppercase}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(34,197,94,.18)}
+.dot.off{background:#F59E0B;box-shadow:0 0 0 4px rgba(245,158,11,.18)}
+
+/* sections */
+section.s{padding:96px 0}
+.s-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.s-head h2{font-size:clamp(34px,4.4vw,60px);margin-top:8px}
+.s-head p{max-width:380px;color:var(--muted)}
+.s-head .mono{color:var(--accent)}
+
+/* регламентная карта */
+.table{background:var(--sheet);border:1px solid var(--line)}
+.tr{display:grid;grid-template-columns:72px 1.1fr 1.6fr 1fr 150px;align-items:center;border-bottom:1px solid var(--line);transition:background .2s}
+.tr:last-child{border-bottom:0}
+.tr>*{padding:16px 18px;min-width:0}
+.tr.th{background:var(--ink);color:#fff}
+.tr.th>*{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding-top:12px;padding-bottom:12px}
+.tr:not(.th):hover{background:#fff}
+.tr .th-img{height:72px;padding:8px;display:grid;place-items:center;border-right:1px solid var(--line)}
+.tr .th-img img{max-height:56px;width:auto;filter:grayscale(1) contrast(1.1)}
+.tr:hover .th-img img{filter:none}
+.tr .th-img svg{width:30px;height:30px;stroke:var(--ink);fill:none;stroke-width:1.8}
+.node{font-family:var(--font-d);font-weight:700;font-size:20px;text-transform:uppercase}
+.int{font-family:var(--mono);font-size:14px;font-weight:600}
+.int small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.go{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);text-align:right}
+.tr:hover .go{text-decoration:underline}
+.tnote{margin-top:12px;color:var(--muted);font-size:13px}
+
+/* заказ-наряд */
+.order-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:start}
+.order{background:var(--sheet);border:1px solid var(--line);box-shadow:12px 12px 0 var(--ink)}
+.order-h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 24px;border-bottom:2px solid var(--ink)}
+.order-h h3{font-size:28px}
+.order-h .mono{color:var(--muted);text-align:right}
+.order-b{display:grid;grid-template-columns:1fr 1fr}
+.cell{padding:16px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);min-width:0}
+.cell:nth-child(2n){border-right:0}
+.cell.full{grid-column:1/-1;border-right:0}
+.cell label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cell input,.cell select{width:100%;border:0;border-bottom:1.5px solid var(--ink);background:transparent;height:38px;font-size:17px;font-weight:500;outline:none;border-radius:0;appearance:none}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+.checks label{display:flex;gap:10px;align-items:center;font-family:var(--font);font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);margin:0;cursor:pointer}
+.checks input{appearance:none;width:18px;height:18px;border:1.5px solid var(--ink);flex:none;display:grid;place-items:center;cursor:pointer;margin:0;padding:0;border-radius:0}
+.checks input:checked{background:var(--accent);border-color:var(--accent)}
+.checks input:checked::after{content:"";width:8px;height:4px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.order-f{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;flex-wrap:wrap}
+.order-f small{color:var(--muted);font-size:13px;max-width:280px}
+.proc{list-style:none;counter-reset:p}
+.proc li{display:grid;grid-template-columns:56px 1fr;gap:0 16px;padding:0 0 26px;position:relative}
+.proc li::before{counter-increment:p;content:counter(p,decimal-leading-zero);grid-row:span 2;width:56px;height:56px;display:grid;place-items:center;border:2px solid var(--ink);font-family:var(--mono);font-weight:600;background:var(--sheet);position:relative;z-index:1}
+.proc li:not(:last-child)::after{content:"";position:absolute;left:27px;top:56px;bottom:0;border-left:2px dashed var(--line)}
+.proc h3{font-size:22px;align-self:end}
+.proc p{color:var(--muted);font-size:15px}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--sheet)}
+.why div{padding:28px;border-right:1px solid var(--line)}
+.why div:last-child{border-right:0}
+.why b{font-family:var(--font-d);font-size:clamp(44px,5vw,72px);font-weight:700;line-height:1;display:block}
+.why b sup{font-size:.4em;color:var(--accent);vertical-align:top}
+.why h3{font-size:20px;margin:16px 0 6px}
+.why p{font-size:14px;color:var(--muted)}
+
+/* contacts */
+.visit{background:var(--navy);color:#fff;padding:48px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;background-image:linear-gradient(rgba(138,182,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(138,182,255,.07) 1px,transparent 1px);background-size:32px 32px}
+.visit h2{font-size:clamp(34px,4vw,56px);margin-top:10px}
+.visit .mono{color:var(--blue-l)}
+.kv{display:grid;gap:14px}
+.kv div{border-top:1px solid rgba(138,182,255,.25);padding-top:12px}
+.kv .mono{font-size:11px;color:#7F95B5}
+.kv b{display:block;font-size:18px;font-weight:600;margin-top:2px}
+.visit .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+.ftr{background:var(--ink);color:#8C97A6;padding:40px 0;font-size:14px}
+.ftr .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.ftr img{height:42px;width:auto}
+
+.mbar{display:none}
+.toast{visibility:hidden;position:fixed;left:50%;bottom:28px;transform:translate(-50%,140%);background:var(--ink);color:#fff;padding:16px 22px;font-family:var(--mono);font-size:13px;z-index:100;transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 32px)}
+.toast.show{visibility:visible;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+@media (max-width:1080px){
+  .nav{display:none}
+  .hero .wrap,.order-wrap,.visit{grid-template-columns:1fr}
+  .spec .wrap{grid-template-columns:repeat(3,1fr)}
+  .spec div{border-bottom:1px solid var(--line)}
+  .why{grid-template-columns:1fr 1fr}
+  .why div:nth-child(2){border-right:0}
+  .why div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .tr{grid-template-columns:64px 1fr 1fr 130px}
+  .tr .what{display:none}
+}
+@media (max-width:720px){
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .hdr .wrap{height:64px}
+  .hdr .logo img{height:38px}
+  .hdr-phone,.hdr .btn{display:none}
+  .hero .wrap{padding-top:44px;padding-bottom:44px;gap:32px}
+  .hero .lead{font-size:16px}
+  .callout{font-size:10px}
+  .c2{display:none}
+  .spec .wrap{grid-template-columns:1fr 1fr;padding-left:0;padding-right:0}
+  .spec div{padding:16px}
+  .spec div:last-child{grid-column:1/-1}
+  .spec b{font-size:20px}
+  section.s{padding:64px 0}
+  .tr{grid-template-columns:56px 1fr auto}
+  .tr .int{grid-column:2/4;grid-row:2;padding-top:0}
+  .tr .go{grid-row:1;grid-column:3}
+  .tr .th-img{grid-row:span 2;height:auto;align-self:stretch}
+  .node{font-size:18px}
+  .tr .go{font-size:0}
+  .tr .go::after{content:"→";font-size:20px}
+  .tr.th{display:none}
+  .order-b{grid-template-columns:1fr}
+  .cell{border-right:0}
+  .checks{grid-template-columns:1fr}
+  .order{box-shadow:6px 6px 0 var(--ink)}
+  .why{grid-template-columns:1fr}
+  .why div{border-right:0;border-bottom:1px solid var(--line)}
+  .visit{padding:28px 20px}
+  .ftr{padding-bottom:96px}
+  .mbar{display:grid;grid-template-columns:1fr 1.6fr;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:0 env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);background:var(--navy)}
+  .mbar a{height:56px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+  .mbar a.main{background:var(--accent)}
+}
+</style>
+</head>
+<body>
+
+<!--@SWITCHER:start-->
+<nav class="cswitch" aria-label="Концепты"><div class="cs-in"><span class="cs-lbl">Концепт</span><a href="./"><b>01</b>Тёмный премиум</a><a href="concept-2.html"><b>02</b>Светлый</a><a href="concept-3.html" class="on" aria-current="page"><b>03</b>Инженерный</a><a class="cs-kp" href="#kp">Было / стало ↓</a></div></nav>
+<!--@SWITCHER:end-->
+
+<header class="hdr">
+  <div class="wrap">
+    <a href="#" class="logo"><img src="assets/logo-light.svg" alt="Мастерская Джили"></a>
+    <nav class="nav"><a href="#map">Регламент</a><a href="#order">Запись</a><a href="#why">О сервисе</a><a href="#visit">Контакты</a></nav>
+    <div class="hdr-r">
+      <a class="hdr-phone" href="tel:+375293210202">+375 29 321 02 02</a>
+      <a class="btn btn-primary" href="#order">Записаться</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="mono">Технический центр Geely · Минск</div>
+      <h1>Обслуживание Geely по регламенту. <em>−20%</em> к цене дилера</h1>
+      <p class="lead">Постгарантийное ТО и ремонт всех моделей Geely. Диагностика на оборудовании под марку, смета до начала работ, запись на точное время.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#order">Оформить заявку →</a>
+        <a class="btn btn-ghost" href="#map">Регламент ТО</a>
+      </div>
+    </div>
+    <div class="frame">
+      <i></i><i></i><i></i><i></i>
+      <div class="img"><img src="assets/hero.jpg" alt="Geely Atlas Pro"></div>
+      <div class="callout c1"><span>Подвеска · тормоза</span></div>
+      <div class="callout c2"><span>Мультимедиа · русификация</span></div>
+      <div class="callout c3"><span>ДВС · масло · ГРМ</span></div>
+      <div class="frame-cap mono"><span>Объект: Geely Atlas Pro</span><span>Лист 01</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="spec">
+  <div class="wrap">
+    <div><span class="mono">Специализация</span><b>Только Geely</b></div>
+    <div><span class="mono">Услуг</span><b>100+</b></div>
+    <div><span class="mono">Экономия</span><b>−20% к дилеру</b></div>
+    <div><span class="mono">Режим</span><b>9–20 · Сб 10–18</b></div>
+    <div><span class="mono">Статус</span><b><span class="dot" id="dot"></span><span id="st">Открыто</span></b></div>
+  </div>
+</div>
+
+<section class="s grid-bg" id="map">
+  <div class="wrap">
+    <div class="s-head">
+      <div><div class="mono">Регламентная карта</div><h2>Что и когда обслуживать</h2></div>
+      <p>Основные узлы и рекомендуемые интервалы. Нажмите на строку, чтобы записаться на работу.</p>
+    </div>
+    <div class="table" role="table">
+      <div class="tr th" role="row"><span></span><span>Узел</span><span class="what">Работы</span><span>Интервал</span><span></span></div>
+      <a class="tr" href="#order" role="row"><span class="th-img"><img src="assets/s-oil.png" alt=""></span><span class="node">Двигатель</span><span class="what">Замена масла и масляного фильтра</span><span class="int">10 000 км<small>или 6 месяцев</small></span><span class="go">Записаться →</span></a>
+      <a class="tr" href="#order" role="row"><span class="th-img"><img src="assets/s-suspension.png" alt=""></span><span class="node">Ходовая</span><span class="what">Сход-развал на 3D-стенде, проверка давления в шинах</span><span class="int">20 000 км<small>и после ремонта подвески</small></span><span class="go">Записаться →</span></a>
+      <a class="tr" href="#order" role="row"><span class="th-img"><img src="assets/s-body.png" alt=""></span><span class="node">Привод ГРМ</span><span class="what">Замена цепи ГРМ — самое ёмкое ТО</span><span class="int">~100 000 км<small>по регламенту модели</small></span><span class="go">Записаться →</span></a>
+      <a class="tr" href="#order" role="row"><span class="th-img"><img src="assets/s-brake.png" alt=""></span><span class="node">Тормоза</span><span class="what">Колодки, диски, замена и прокачка жидкости</span><span class="int">По состоянию<small>при шуме или слабом торможении</small></span><span class="go">Записаться →</span></a>
+      <a class="tr" href="#order" role="row"><span class="th-img"><svg viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6"/></svg></span><span class="node">Климат</span><span class="what">Проверка и заправка кондиционера, поиск утечек</span><span class="int">Ежегодно<small>перед летом</small></span><span class="go">Записаться →</span></a>
+      <a class="tr" href="#order" role="row"><span class="th-img"><img src="assets/s-wash.png" alt=""></span><span class="node">Кузов</span><span class="what">Антикор порогов, арок и днища, мойка днища</span><span class="int">Сезонно<small>до начала реагентов</small></span><span class="go">Записаться →</span></a>
+      <a class="tr" href="#order" role="row"><span class="th-img"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg></span><span class="node">Мультимедиа</span><span class="what">Русификация, голосовые подсказки, прошивка ГУ</span><span class="int">От 500 BYN<small>разово</small></span><span class="go">Записаться →</span></a>
+    </div>
+    <p class="tnote">Точный регламент зависит от модели, комплектации и пробега — уточним при записи.</p>
+  </div>
+</section>
+
+<section class="s" id="order" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head">
+      <div><div class="mono">Онлайн-запись</div><h2>Заявка-наряд за минуту</h2></div>
+      <p>Заполните как на приёмке — мастер увидит заявку сразу и подтвердит время.</p>
+    </div>
+    <div class="order-wrap">
+      <form class="order" onsubmit="return send(event)">
+        <div class="order-h"><h3>Заявка-наряд</h3><div class="mono">№ <span id="no">—</span><br><span id="date">—</span></div></div>
+        <div class="order-b">
+          <div class="cell"><label for="m">Модель</label><select id="m"></select></div>
+          <div class="cell"><label for="km">Пробег, км</label><input id="km" inputmode="numeric" placeholder="например, 60 000"></div>
+          <div class="cell full"><label>Работы</label>
+            <div class="checks">
+              <label><input type="checkbox" checked> Плановое ТО</label>
+              <label><input type="checkbox"> Диагностика</label>
+              <label><input type="checkbox"> Подвеска / развал</label>
+              <label><input type="checkbox"> Тормоза</label>
+              <label><input type="checkbox"> Автоэлектрика</label>
+              <label><input type="checkbox"> Русификация ГУ</label>
+            </div>
+          </div>
+          <div class="cell"><label for="nm">Имя</label><input id="nm" placeholder="Как к вам обращаться"></div>
+          <div class="cell"><label for="tl">Телефон</label><input id="tl" type="tel" placeholder="+375 (__) ___-__-__"></div>
+        </div>
+        <div class="order-f"><small>Смету пришлём до начала работ. Без вашего согласия ничего не делаем.</small><button class="btn btn-primary" type="submit">Отправить заявку →</button></div>
+      </form>
+      <ol class="proc">
+        <li><h3>Приёмка</h3><p>Записываетесь на время, приезжаете без очереди.</p></li>
+        <li><h3>Диагностика</h3><p>Осмотр и компьютерная диагностика на оборудовании под Geely.</p></li>
+        <li><h3>Смета</h3><p>Перечень работ и цена — до того, как мастер возьмёт ключ.</p></li>
+        <li><h3>Работы</h3><p>Только проверенные запчасти, сертифицированные мастера.</p></li>
+        <li><h3>Выдача</h3><p>Фотоотчёт в мессенджер и заменённые детали на руки.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="why" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head"><div><div class="mono">Технические характеристики сервиса</div><h2>Почему мы</h2></div></div>
+    <div class="why">
+      <div><b>−20<sup>%</sup></b><h3>Дешевле дилера</h3><p>В среднем по чеку на ТО и ремонт.</p></div>
+      <div><b>100<sup>+</sup></b><h3>Услуг для Geely</h3><p>Работаем только с одной маркой.</p></div>
+      <div><b>3D</b><h3>Стенд развала</h3><p>Точные данные о геометрии подвески.</p></div>
+      <div><b>0</b><h3>Работ без сметы</h3><p>Цена согласована заранее.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="visit" style="padding-top:0">
+  <div class="wrap">
+    <div class="visit">
+      <div>
+        <div class="mono">Координаты</div>
+        <h2>Рядом с МКАД, у ТЦ Diamond City</h2>
+        <div class="btns"><a class="btn btn-primary" href="#order">Записаться</a><a class="btn btn-ghost" href="#">Маршрут в Яндекс Картах</a></div>
+      </div>
+      <div class="kv">
+        <div><span class="mono">Адрес</span><b>Щомыслицкий с/с, 109, Минский район</b></div>
+        <div><span class="mono">Телефон</span><b><a href="tel:+375293210202">+375 29 321 02 02</a></b></div>
+        <div><span class="mono">Режим</span><b>Пн–Пт 9:00–20:00 · Сб 10:00–18:00</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ftr">
+  <div class="wrap">
+    <img src="assets/logo-light.svg" alt="Мастерская Джили">
+    <span class="mono">ООО «Мастерская Джи» · УНП 692202166</span>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Быстрые действия"><a href="tel:+375293210202">Звонок</a><a class="main" href="#order">Заявка →</a></nav>
+
+<!--@KP:start-->
+<!-- =========================================================
+     KP: «Было / Стало»
+     ========================================================= -->
+<section class="kp" id="kp">
+  <div class="wrap">
+    <div class="kp-top reveal">
+      <h2>Сейчас сайт <span>рассказывает.</span><br>Новый — будет записывать.</h2>
+      <div class="kp-contacts"><a class="cphone" href="tel:+375295708247">+375 29 570-82-47</a><a class="cico tg" href="https://t.me/Alexander_SN" target="_blank" rel="noopener" aria-label="Telegram @Alexander_SN" title="Telegram @Alexander_SN"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></a><a class="cico vb" href="viber://chat?number=%2B375295708247" aria-label="Viber +375 29 570-82-47" title="Viber +375 29 570-82-47"><svg viewBox="0 0 24 24"><path d="M11.4 1C8 1 3.2 1.8 2.3 6.3c-.6 2.5-.5 5.4.2 8 .6 2.2 2 3.6 4 4.3v3.1c0 .6.7.9 1.1.4l2.9-3c2.8.1 6.8-.4 8.7-2 2.4-2 2.7-6.2 2-9.8C20.5 2.6 16.3 1 11.4 1zm4.8 13.9c-.4.6-1.1 1.2-1.9 1-2.9-.8-6.7-4.4-7.6-7.4-.2-.8.4-1.5 1-1.9.5-.3 1.1-.1 1.4.3l1 1.4c.3.4.2 1-.2 1.3l-.4.3c.6 1.6 1.8 2.8 3.4 3.4l.3-.4c.3-.4.9-.5 1.3-.2l1.4 1c.4.3.6.9.3 1.2z"/></svg></a></div>
+    </div>
+
+    <div class="kp-grid">
+      <!-- БЫЛО -->
+      <div class="reveal">
+        <span class="col-lbl was">● Сейчас</span>
+        <div class="old">
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>geely-master.by</span></div>
+            <img src="assets/old-site.jpg" alt="Текущая главная geely-master.by">
+          </div>
+          <div class="phone"><img src="assets/old-mobile.jpg" alt="Текущая мобильная версия"></div>
+          <span class="pin" style="left:6%;top:28%">1</span>
+          <span class="pin" style="left:20%;top:52%">2</span>
+          <span class="pin" style="left:48%;top:12%">3</span>
+          <span class="pin" style="right:6%;top:62%">4</span>
+        </div>
+        <ul class="issues">
+          <li><b>1</b><span><strong>Оффер без причины выбрать вас.</strong> «−20% к дилеру» спрятано в середине страницы, а кнопка первого экрана — «Подробнее».</span></li>
+          <li><b>2</b><span><strong>Нет записи с выбором модели и услуги.</strong> Форма — только в самом низу, после SEO-текста.</span></li>
+          <li><b>3</b><span><strong>Дилерский стиль без характера.</strong> Ничем не отличается от сотни СТО; спецуслуги (русификация, прошивка) не видны.</span></li>
+          <li><b>4</b><span><strong>Медленный мобильный.</strong> Полная загрузка 5–6 с, 91 запрос — часть людей уходит раньше.</span></li>
+        </ul>
+        <div class="metrics">
+          <div class="metric"><b>2–3,6 с</b><span>до первого контента</span></div>
+          <div class="metric"><b>5,3–6 с</b><span>полная загрузка</span></div>
+          <div class="metric"><b>91</b><span>запрос к серверу</span></div>
+          <div class="metric"><b>~3,9 МБ</b><span>вес главной</span></div>
+        </div>
+        <p class="note">Замер 30.10.2026, два прогона, мобильная эмуляция (iPhone 13), без ограничения скорости сети.</p>
+      </div>
+
+      <!-- СТАНЕТ -->
+      <div class="reveal">
+        <span class="col-lbl will">● После апгрейда</span>
+        <div class="will-card">
+          <h3>Сайт, который <span>записывает клиентов</span>, пока мастера работают</h3>
+          <p class="usp">Главная продаёт с первого экрана: цифра выгоды, живой статус «открыто», запись в 3 касания — и всё это удобно с телефона.</p>
+
+          <div class="phase">
+            <div class="phase-h"><b>01</b><span>Визуальный апгрейд</span></div>
+            <div class="feat">
+              <div><strong>Оффер с цифрой</strong><p>«На 20% дешевле дилера» — первым, что видит клиент.</p></div>
+              <div><strong>Инженерный стиль</strong><p>Чертёжная эстетика и регламент на виду — экспертиза без лишних слов.</p></div>
+              <div><strong>Mobile-first</strong><p>Звонок, Telegram и запись всегда под пальцем.</p></div>
+              <div><strong>Скорость &lt; 2 с</strong><p>Лёгкие изображения, без лишних скриптов. Цель по первому экрану.</p></div>
+            </div>
+          </div>
+
+          <div class="phase">
+            <div class="phase-h"><b>02</b><span>Функционал</span></div>
+            <div class="feat">
+              <div><strong>Онлайн-запись</strong><p>Модель → услуга → время. Заявка сразу мастеру в Telegram.</p></div>
+              <div><strong>Калькулятор ТО</strong><p>Стоимость по модели и пробегу — до звонка.</p></div>
+              <div><strong>Живые отзывы</strong><p>Подтягиваем рейтинг и отзывы с Яндекс Карт.</p></div>
+              <div><strong>Страницы спецуслуг</strong><p>Русификация и прошивка — отдельные посадочные под рекламу.</p></div>
+            </div>
+          </div>
+
+          <div class="kp-cta">
+            <a class="btn btn-primary" href="https://t.me/Alexander_SN" target="_blank" rel="noopener">Обсудить проект →</a>
+            <div class="kp-contacts dark-c"><a class="cphone" href="tel:+375295708247">+375 29 570-82-47</a><a class="cico tg" href="https://t.me/Alexander_SN" target="_blank" rel="noopener" aria-label="Telegram @Alexander_SN" title="Telegram @Alexander_SN"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg></a><a class="cico vb" href="viber://chat?number=%2B375295708247" aria-label="Viber +375 29 570-82-47" title="Viber +375 29 570-82-47"><svg viewBox="0 0 24 24"><path d="M11.4 1C8 1 3.2 1.8 2.3 6.3c-.6 2.5-.5 5.4.2 8 .6 2.2 2 3.6 4 4.3v3.1c0 .6.7.9 1.1.4l2.9-3c2.8.1 6.8-.4 8.7-2 2.4-2 2.7-6.2 2-9.8C20.5 2.6 16.3 1 11.4 1zm4.8 13.9c-.4.6-1.1 1.2-1.9 1-2.9-.8-6.7-4.4-7.6-7.4-.2-.8.4-1.5 1-1.9.5-.3 1.1-.1 1.4.3l1 1.4c.3.4.2 1-.2 1.3l-.4.3c.6 1.6 1.8 2.8 3.4 3.4l.3-.4c.3-.4.9-.5 1.3-.2l1.4 1c.4.3.6.9.3 1.2z"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--@KP:end-->
+
+<div class="toast" id="toast"></div>
+
+<script>
+const MODELS=["Monjaro","Atlas Pro","Coolray","Tugella","Okavango","Atlas","Emgrand 7","Emgrand X7","Binyue Cool","SC7","Другая"];
+document.getElementById("m").innerHTML=MODELS.map(m=>`<option>Geely ${m}</option>`).join("");
+const now=new Date(new Date().toLocaleString("en-US",{timeZone:"Europe/Minsk"}));
+document.getElementById("date").textContent=now.toLocaleDateString("ru-RU");
+document.getElementById("no").textContent=String(now.getMonth()+1).padStart(2,"0")+String(now.getDate()).padStart(2,"0")+"-"+String(now.getHours()).padStart(2,"0")+String(now.getMinutes()).padStart(2,"0");
+(function(){const d=now.getDay(),h=now.getHours()+now.getMinutes()/60;const H={1:[9,20],2:[9,20],3:[9,20],4:[9,20],5:[9,20],6:[10,18]}[d];
+if(!(H&&h>=H[0]&&h<H[1])){document.getElementById("dot").classList.add("off");document.getElementById("st").textContent="Закрыто"}})();
+function send(e){e.preventDefault();const t=document.getElementById("toast");t.textContent="Демо: в рабочей версии наряд сразу уйдёт мастеру в Telegram ✓";t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3200);return false}
+</script>
+</body>
+</html>
